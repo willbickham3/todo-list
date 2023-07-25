@@ -7,7 +7,7 @@ function interfaceGen() {
     documentBody.prepend(createAnElement('header', 'header', null, null))
     documentBody.append(mainContainer, createAnElement('footer', 'footer', null, null));
 
-    mainContainer.append(createAnElement('nav', 'nav', 'sub-container', null), createAnElement('div', 'task-list', 'sub-container'))
+    mainContainer.append(createAnElement('nav', 'nav', 'sub-container', null), createAnElement('div', 'task-list', 'sub-container', null))
 }
 
 export default interfaceGen
