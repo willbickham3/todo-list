@@ -1,14 +1,25 @@
-// createAnElement takes 4 arguments (element that you want to create, class name, id (optional: can be set to null), string for innerHTML)
-
 import createAnElement from "./elementCreater";
 
 function tasklist() {
-    const navContainer = document.querySelector('.nav');
-    
-    const navBar = createAnElement('div', 'nav-bar', null, null);
-    const projectContainer = createAnElement('div', 'project-container', null, null);
+    const tasklist = document.querySelector('.to-do-container');
+    const fieldset = document.createElement('fieldset');
 
-    navContainer.append(navBar, projectContainer);
+    const legend = document.createElement('legend');
+    legend.innerHTML = 'Task List';
+    const taskInp = document.createElement('input');
+    taskInp.placeholder = ('Create a task...');
+    const taskBtn = document.createElement('button');
+    taskBtn.innerHTML = 'Create Task';
+
+    if (taskInp) {
+        taskBtn.addEventListener('click', () => {
+            console.log(`${taskInp.value}`)
+            location.reload()
+        })
+    }
+
+    tasklist.appendChild(fieldset);
+    fieldset.append(legend, taskInp, taskBtn);
 }
 
 export default tasklist
