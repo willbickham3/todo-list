@@ -35,7 +35,7 @@
     width: 20%;
   }
 
-  .task-list {
+  .to-do-container {
     background-color: var(--dark-brown);
     width: 80%;
   }
