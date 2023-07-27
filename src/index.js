@@ -1,6 +1,6 @@
 import interfaceGen from "./domManipulation/interface"
 import './style.css'
 
-interfaceGen()
+interfaceGen();
 
-console.log('poggers')
+console.log('poggers');
