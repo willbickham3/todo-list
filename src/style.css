@@ -40,6 +40,10 @@
     width: 80%;
   }
 
+  .to-do-list {
+    color: white;
+  }
+
   footer {
     background-color: var(--vibrant-cyan);
     width: 100%;
