@@ -1,3 +1,4 @@
+import addATask from "./addATask";
 import createAnElement from "./elementCreater";
 
 function tasklist() {
@@ -6,20 +7,23 @@ function tasklist() {
 
     const legend = document.createElement('legend');
     legend.innerHTML = 'Task List';
-    const taskInp = document.createElement('input');
-    taskInp.placeholder = ('Create a task...');
-    const taskBtn = document.createElement('button');
-    taskBtn.innerHTML = 'Create Task';
 
-    if (taskInp) {
-        taskBtn.addEventListener('click', () => {
-            console.log(`${taskInp.value}`)
-            location.reload()
-        })
-    }
+    const taskInp = document.createElement('input');
+    taskInp.classList.add('taskInput');
+    taskInp.type = 'text';
+    taskInp.placeholder = ('Create a task...');
+
+    const dateInput = document.createElement('input');
+    dateInput.classList.add('dateInput');
+    dateInput.type = 'date';
+
+    const taskBtn = document.createElement('button');
+    taskBtn.classList.add('add-task');
+    taskBtn.innerHTML = 'Create Task';
+    taskBtn.addEventListener('click', addATask(taskBtn));
 
     tasklist.appendChild(fieldset);
-    fieldset.append(legend, taskInp, taskBtn);
+    fieldset.append(legend, taskInp, dateInput, taskBtn);
 }
 
 export default tasklist
