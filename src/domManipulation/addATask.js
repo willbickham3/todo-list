@@ -1,5 +1,5 @@
 import createAnElement from "../domManipulation/elementCreater";
-import { differenceInDays, format } from "date-fns";
+import { differenceInDays, differenceInHours, format } from "date-fns";
 
 
 function addATask(button) {
@@ -30,15 +30,28 @@ function addATask(button) {
             const date = new Date();
             const formatDate = new Date(dateInput.value);
             const dueDate = differenceInDays(formatDate, date)
+            const hoursDifference = differenceInHours(formatDate, date);
 
             const dueDateValue = document.createElement('div');
-            dueDateValue.innerHTML= `${dueDate}`;
-            
+            dueDateValue.classList.add('due-date')
+            if (dateInput.value == '') {
+                dueDateValue.innerHTML = "";
+            }
+
+            else if (dueDate < 1) {
+                dueDateValue.innerHTML = `~${hoursDifference} Hours`
+            }
+            else if (dueDate >= 2) {
+                dueDateValue.innerHTML = `Coming up in ~${dueDate} days`
+            }
+            else {dueDateValue.innerHTML= `Coming up in ~${dueDate} day`;}
+                
             let taskContainer = document.querySelector('.to-do-list');
             divForTasks.append(taskDiv, dueDateValue, deleteBtn);
             taskContainer.append(divForTasks);
             taskInput.value = "";
             dateInput.value = "";
+            console.log(divForTasks);
         })
     }
 
