@@ -13,8 +13,8 @@ function interfaceGen() {
     mainContainer.append(createAnElement('nav', 'nav', 'sub-container', null), createAnElement('div', 'to-do-container', 'sub-container', null))
 
     taskcontainer();
-    toDoBoard();
     tasklist();
+    toDoBoard();
 }
 
 export default interfaceGen
