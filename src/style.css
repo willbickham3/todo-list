@@ -38,10 +38,22 @@
   .to-do-container {
     background-color: var(--dark-brown);
     width: 80%;
+    padding: 20px;
   }
 
   .to-do-list {
     color: white;
+  }
+
+  .task {
+    display: flex;
+    font-size: 1.5em;
+    padding: 10px;
+  }
+
+  .task button {
+    margin-left: auto;
+    border-radius: 5px;
   }
 
   footer {
