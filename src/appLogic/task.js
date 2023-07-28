@@ -14,24 +14,31 @@ class Task {
             if (this.title.trim() === '') {
                 return
             }
-            const taskDiv = createAnElement('div', 'task', null, `${this.title}`);
+            const taskDiv = createAnElement('div', 'task-name', null, `${this.title}`);
+            taskDiv.addEventListener('click', () => {
+                const newTitle = prompt('Update Task Name:', this.title);
+                if (newTitle !== null && newTitle.trim() !== '') {
+                    this.title = newTitle;
+                    taskDiv.innerHTML = newTitle;
+                }
+            })
             return taskDiv
         }
 
         appendDate() {
             const dueDateValue = createAnElement('div', 'due-date')
 
+            if (this.dueDate == '') {
+                dueDateValue.innerHTML = '';
+                return dueDateValue;
+            }
+
             const today = new Date();
             const formatDate = new Date(this.dueDate);
             const dateDue = differenceInDays(formatDate, today)
             const hoursDifference = differenceInHours(formatDate, today);
 
-            if (this.dueDate == '') {
-                dueDateValue.innerHTML = "";
-                return dueDateValue
-            }
-
-            else if (dateDue < 1) {
+            if (dateDue < 1) {
                 dueDateValue.innerHTML = `~${hoursDifference} Hours`;
                 return dueDateValue
             }
@@ -42,12 +49,22 @@ class Task {
             else {dueDateValue.innerHTML= `Coming up in ~${dateDue} day`;
             return dueDateValue
         }
-            
+    }
+
+        removeTask() {
+            const deleteBtn = createAnElement('button', 'delete', null, 'Remove Task');
+            deleteBtn.addEventListener('click', () => {
+                const parent = deleteBtn.parentElement;
+                parent.remove();
+            })
+            return deleteBtn
         }
 
         appendItAll() {
-            const divForTasks = document.querySelector('.actual-container');
-            divForTasks.append(this.appendTitle(), this.appendDate())
+            const toDoList = document.querySelector('.to-do-list');
+            const taskList = createAnElement('div', 'task', null, null);
+            toDoList.appendChild(taskList);
+            taskList.append(this.appendTitle(), this.appendDate(), this.removeTask())
         }
 }
 
