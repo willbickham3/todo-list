@@ -1,6 +1,8 @@
 import createAnElement from "../domManipulation/elementCreater";
 import { differenceInDays, differenceInHours, format } from "date-fns";
 
+let taskManager = [];
+
 class Task {
     constructor(title, dueDate, project, priority) {
         this.title = title;
@@ -8,7 +10,7 @@ class Task {
         this.project = project;
         this.priority = priority;
     }
-        
+
     
         appendTitle() {
             if (this.title.trim() === '') {
@@ -60,11 +62,32 @@ class Task {
             return deleteBtn
         }
 
+        localStoring() {
+            const storedTasks = JSON.stringify(taskManager);
+            localStorage.setItem('tasks', storedTasks);
+            return storedTasks
+        }
+
+        localRetrieval() {
+            const retrievedTasks = JSON.parse(localStorage.getItem('tasks'));
+            console.log(typeof(retrievedTasks))
+            taskManager.push(retrievedTasks)
+            return retrievedTasks
+        }
+
+        localClear() {
+            localStorage.clear();
+        }
+
+        
+
         appendItAll() {
             const toDoList = document.querySelector('.to-do-list');
-            const taskList = createAnElement('div', 'task', null, null);
+            const taskList = createAnElement('div', 'task', `${this.project}`, null);
             toDoList.appendChild(taskList);
             taskList.append(this.appendTitle(), this.appendDate(), this.removeTask())
+            taskManager.push(this);
+            this.localStoring();
         }
 }
 
