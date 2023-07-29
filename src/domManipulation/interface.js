@@ -2,6 +2,7 @@ import createAnElement from "./elementCreater";
 import taskcontainer from "./taskcontainer";
 import toDoBoard from "./todoboard";
 import tasklist from "./tasklist";
+import projectBoard from "./projectBoard";
 
 function interfaceGen() {
     const documentBody = document.querySelector('body');
@@ -13,6 +14,7 @@ function interfaceGen() {
     mainContainer.append(createAnElement('nav', 'nav', 'sub-container', null), createAnElement('div', 'to-do-container', 'sub-container', null))
 
     taskcontainer();
+    projectBoard();
     tasklist();
     toDoBoard();
 }
