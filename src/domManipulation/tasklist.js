@@ -17,13 +17,17 @@ function tasklist() {
     dateInput.classList.add('dateInput');
     dateInput.type = 'date';
 
+    const projectSelector = document.createElement('select');
+    const blankOption = document.createElement('option');
+    projectSelector.appendChild(blankOption)
+
     const taskBtn = document.createElement('button');
     taskBtn.classList.add('add-task');
     taskBtn.innerHTML = 'Create Task';
     taskBtn.addEventListener('click', addATask(taskBtn));
 
     tasklist.appendChild(fieldset);
-    fieldset.append(legend, taskInp, dateInput, taskBtn);
+    fieldset.append(legend, taskInp, dateInput, projectSelector, taskBtn);
 }
 
 export default tasklist
