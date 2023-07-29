@@ -37,18 +37,22 @@
 
   .to-do-container {
     background-color: var(--dark-brown);
-    width: 80%;
+    width: 100%;
     padding: 20px;
   }
 
   .to-do-list {
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
   }
 
   .task {
     display: flex;
     font-size: 1.5em;
     padding: 10px;
+    border: 2px solid var(--bright-cyan);
   }
 
   .task button {
