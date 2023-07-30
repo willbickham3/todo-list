@@ -3,6 +3,7 @@ import taskcontainer from "./taskcontainer";
 import toDoBoard from "./todoboard";
 import tasklist from "./tasklist";
 import projectBoard from "./projectBoard";
+import populatePage from "../appLogic/populatePage";
 
 function interfaceGen() {
     const documentBody = document.querySelector('body');
@@ -17,6 +18,7 @@ function interfaceGen() {
     projectBoard();
     tasklist();
     toDoBoard();
+    populatePage();
 }
 
 export default interfaceGen
