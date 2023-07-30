@@ -58,6 +58,8 @@ class Task {
             deleteBtn.addEventListener('click', () => {
                 const parent = deleteBtn.parentElement;
                 parent.remove();
+                taskManager = taskManager.filter(task => !(task.title === this.title && task.dueDate === this.dueDate));
+                this.localStoring();
             })
             return deleteBtn
         }
@@ -68,12 +70,15 @@ class Task {
             return storedTasks
         }
 
-        localRetrieval() {
-            const retrievedTasks = JSON.parse(localStorage.getItem('tasks'));
-            console.log(typeof(retrievedTasks))
-            taskManager.push(retrievedTasks)
-            return retrievedTasks
-        }
+        // localRetrieval() {
+        //     if (taskManager) {
+        //     const retrievedTasks = JSON.parse(localStorage.getItem('tasks'));
+        //     return retrievedTasks 
+        //     }
+        //     else {
+        //         return
+        //     }
+        // }
 
         localClear() {
             localStorage.clear();
