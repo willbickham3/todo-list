@@ -8,7 +8,7 @@ function populatePage() {
     else {
     retrievedTasks = JSON.parse(retrievedTasks);
     retrievedTasks.forEach(tasks => {
-        let task = new Task(tasks.title, tasks.dueDate);
+        let task = new Task(tasks.title, tasks.dueDate, '');
         task.appendItAll();
     })
 }
