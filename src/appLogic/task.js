@@ -7,6 +7,7 @@ class Task {
     constructor(title, dueDate, project, priority) {
         this.title = title;
         this.dueDate = dueDate;
+        if (!project) {this.project == null}
         this.project = project;
         this.priority = priority;
     }
@@ -20,8 +21,11 @@ class Task {
             taskDiv.addEventListener('click', () => {
                 const newTitle = prompt('Update Task Name:', this.title);
                 if (newTitle !== null && newTitle.trim() !== '') {
+                    const index = taskManager.findIndex(task => task.title === this.title);
+                    taskManager[index].title = newTitle;
                     this.title = newTitle;
                     taskDiv.innerHTML = newTitle;
+                    this.localStoring();
                 }
             })
             return taskDiv
@@ -52,6 +56,14 @@ class Task {
             return dueDateValue
         }
     }
+
+        titleChecker() {
+            let dupedTitle = taskManager.some(task => task.title === this.title);
+            if (dupedTitle) {
+                alert('Please choose different title!');
+            }
+            return !dupedTitle;
+        }
 
         removeTask() {
             const deleteBtn = createAnElement('button', 'delete', null, 'Remove Task');
@@ -89,11 +101,14 @@ class Task {
         appendItAll() {
             const toDoList = document.querySelector('.to-do-list');
             const taskList = createAnElement('div', 'task', `${this.project}`, null);
-            toDoList.appendChild(taskList);
-            taskList.append(this.appendTitle(), this.appendDate(), this.removeTask())
-            taskManager.push(this);
-            this.localStoring();
+            const titlechecker = this.titleChecker();
+            if (titlechecker) {
+                toDoList.appendChild(taskList);
+                taskList.append(this.appendTitle(), this.appendDate(), this.removeTask())
+                taskManager.push(this);
+                this.localStoring();
         }
+    }
 }
 
 export default Task
