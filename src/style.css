@@ -18,7 +18,7 @@
   }
 
   header {
-    background-color: var(--vibrant-cyan);
+    background-color: var(--dark-brown);
     width: 100%;
     height: 15%;
   }
@@ -36,9 +36,41 @@
   }
 
   .to-do-container {
-    background-color: var(--dark-brown);
+    background-color: var(--vibrant-cyan);
     width: 100%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .to-do-container > fieldset, .to-do-list {
+    width: 70%;
+  }
+
+  fieldset {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .taskInput {
+    border: var(--burnt-orange) 1px solid;
+    border-radius: 5px;
+    font-size: 1.2em;
+    width: 400px;
+  }
+
+  .dateInput {
+
+  }
+
+  select {
+    width: 150px;
+  }
+
+  .add-task {
+    border-radius: 6px;
   }
 
   .to-do-list {
@@ -49,19 +81,27 @@
   }
 
   .task {
-    display: flex;
+    display: grid;
+    grid-template-columns: 5fr 2fr 1fr;
     font-size: 1.5em;
     padding: 10px;
+    background-color: var(--burnt-orange);
     border: 2px solid var(--bright-cyan);
+    border-radius: 9px;
+    column-gap: 10px;
   }
 
   .task button {
-    margin-left: auto;
     border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .task div {
+    cursor: pointer;
   }
 
   footer {
-    background-color: var(--vibrant-cyan);
+    background-color: var(--dark-brown);
     width: 100%;
     height: 15%;
   }
