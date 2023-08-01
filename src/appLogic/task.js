@@ -70,7 +70,7 @@ class Task {
             deleteBtn.addEventListener('click', () => {
                 const parent = deleteBtn.parentElement;
                 parent.remove();
-                taskManager = taskManager.filter(task => !(task.title === this.title && task.dueDate === this.dueDate));
+                taskManager = taskManager.filter(task => !(task.title === this.title && task.dueDate === this.dueDate && task.project === this.project));
                 this.localStoring();
             })
             return deleteBtn
@@ -96,18 +96,20 @@ class Task {
             localStorage.clear();
         }
 
+        appendALittle() {
+            const toDoList = document.querySelector('.to-do-list');
+            const projectName = createAnElement('h1', 'project-name', null, `${this.project}`);
+            const taskList = createAnElement('div', 'task', `${this.project}`, null);
+            toDoList.appendChild(taskList);
+            taskList.append(this.appendTitle(), this.appendDate(), this.removeTask())
+        }
         
 
         appendItAll() {
-            const toDoList = document.querySelector('.to-do-list');
-            const taskList = createAnElement('div', 'task', `${this.project}`, null);
-            const titlechecker = this.titleChecker();
-            if (titlechecker) {
-                toDoList.appendChild(taskList);
-                taskList.append(this.appendTitle(), this.appendDate(), this.removeTask())
-                taskManager.push(this);
-                this.localStoring();
-        }
+            this.appendALittle();
+            taskManager.push(this);
+            this.localStoring();
+        
     }
 }
 
