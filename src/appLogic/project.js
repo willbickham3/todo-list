@@ -1,4 +1,6 @@
 import createAnElement from "../domManipulation/elementCreater";
+import tasklist from "../domManipulation/tasklist";
+import Task from "./task";
 
 let projects = [];
 
@@ -10,6 +12,21 @@ class Project {
     appendProject() {
         const projectName = createAnElement('button', 'project', `${this.projectName}`, `${this.projectName}`);
         document.querySelector('.project-container').append(projectName);
+        projectName.addEventListener('click', () => {
+            let tasks = document.querySelectorAll('.task');
+            let taskManager = localStorage.getItem('tasks');
+            taskManager = JSON.parse(taskManager);
+            tasks.forEach(taskdiv => {
+                    taskdiv.remove();
+                
+            })
+            taskManager.forEach(element => {
+                let taskItem = new Task(element.title, element.dueDate, element.project)
+                if (element.project === this.projectName) {
+                    taskItem.appendALittle();
+                }
+            })
+        })
         return projectName
     }
 
@@ -28,6 +45,7 @@ class Project {
             projects = JSON.parse(storedProjects)
         }
         projects.push(this.projectName);
+        localStorage.setItem('projects', JSON.stringify(projects));
         console.log(projects)
         return { storedProjects, projects }
     }
@@ -44,7 +62,10 @@ class Project {
             projects = JSON.parse(retrievedProjects);
         }
         projects.forEach(project => {
-            document.querySelector('.project-container').append(project)
+            if (project.project === this.projectName) {
+                let newTask = new Task(project.title, project.dueDate, project.project, project.priority);
+                newTask.appendALittle();
+            }
         })
     }
 
