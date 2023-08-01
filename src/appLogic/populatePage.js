@@ -15,8 +15,8 @@ function getTasks() {
     else {
     retrievedTasks = JSON.parse(retrievedTasks);
     retrievedTasks.forEach(tasks => {
-        let task = new Task(tasks.title, tasks.dueDate, '');
-        task.appendItAll();
+        let task = new Task(tasks.title, tasks.dueDate, tasks.project);
+        task.appendALittle();
     })
 }
 }
