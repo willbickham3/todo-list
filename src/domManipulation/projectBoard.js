@@ -21,7 +21,7 @@ function projectBoard() {
         const newProject = prompt('Name of Project', )
     if (newProject !== null && newProject.trim() !== '') {
         let project = new Project(newProject);
-        project.doAllTheThings();
+        project.doAllTheThings()
     }
     })
 }
