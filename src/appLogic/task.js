@@ -107,6 +107,10 @@ class Task {
 
         appendItAll() {
             this.appendALittle();
+            if (taskManager) {
+                let taskManager = localStorage.getItem('tasks');
+                taskManager = JSON.parse(taskManager);
+            }
             taskManager.push(this);
             this.localStoring();
         
