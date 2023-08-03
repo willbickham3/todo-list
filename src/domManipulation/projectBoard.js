@@ -19,7 +19,12 @@ function projectBoard() {
     projectContainer.append(projectCreater, createNewProject);
 
     homeScreen.addEventListener('click', () => {
-        getTasks()
+        let tasks = document.querySelectorAll('.task');
+        const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+        if (tasks.length !== storedTasks.length) {
+            tasks.forEach(task => {task.remove()});
+            getTasks();
+        }
     })
 
     createNewProject.addEventListener('click', () => {
