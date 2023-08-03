@@ -7,7 +7,7 @@ function populatePage() {
 }
 
 
-function getTasks() {
+export function getTasks() {
     let retrievedTasks = localStorage.getItem('tasks');
     if (retrievedTasks === null || retrievedTasks.length === 0) {
         return
