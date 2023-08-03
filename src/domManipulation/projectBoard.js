@@ -1,5 +1,6 @@
 import Project from "../appLogic/project";
 import createAnElement from "./elementCreater";
+import { getTasks } from "../appLogic/populatePage";
 
 let projects = [];
 
@@ -7,7 +8,7 @@ function projectBoard() {
     const navBar = document.querySelector('.nav-bar');
     const projectContainer = document.querySelector('.project-container');
 
-    const homeScreen = createAnElement('div', 'home-page', null, 'Home');
+    const homeScreen = createAnElement('button', 'home-page', null, 'Home');
     const today = createAnElement('div', 'today', null, `Today`);
     const tomorrow = createAnElement('div', 'tomorrow', null, 'Tomorrow');
 
@@ -16,6 +17,10 @@ function projectBoard() {
 
     navBar.append(homeScreen, today, tomorrow);
     projectContainer.append(projectCreater, createNewProject);
+
+    homeScreen.addEventListener('click', () => {
+        getTasks()
+    })
 
     createNewProject.addEventListener('click', () => {
         const newProject = prompt('Name of Project', )
