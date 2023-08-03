@@ -47,6 +47,19 @@
     gap: 10px;
   }
 
+  .nav-bar button {
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    background-color: var(--secondary-light);
+  }
+
+  button:hover {
+    transform: scale(1.1);
+    transition: 0.2s;
+  }
+
   .make-a-project {
     font-size: 1em;
     border-radius: 5px;
