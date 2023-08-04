@@ -15,7 +15,7 @@ function projectBoard() {
     const projectCreater = createAnElement('h1', 'projects', null, 'Projects');
     const createNewProject = createAnElement('button', 'make-a-project', null, '+ add a project!');
 
-    navBar.append(homeScreen, today, tomorrow);
+    navBar.append(homeScreen);
     projectContainer.append(projectCreater, createNewProject);
 
     homeScreen.addEventListener('click', () => {
