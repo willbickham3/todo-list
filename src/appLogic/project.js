@@ -12,13 +12,13 @@ class Project {
     appendProject() {
         const projectName = createAnElement('button', 'project', `${this.projectName}`, `${this.projectName}`);
         document.querySelector('.project-container').append(projectName);
+        projectName.append(this.removeProject());
         projectName.addEventListener('click', () => {
             let tasks = document.querySelectorAll('.task');
             let taskManager = localStorage.getItem('tasks');
             taskManager = JSON.parse(taskManager);
             tasks.forEach(taskdiv => {
                     taskdiv.remove();
-                
             })
             taskManager.forEach(element => {
                 let taskItem = new Task(element.title, element.dueDate, element.project)
@@ -67,6 +67,17 @@ class Project {
                 newTask.appendALittle();
             }
         })
+    }
+
+    removeProject() {
+        const deleteBtn = createAnElement('button', 'delete-project', null, 'X');
+        deleteBtn.addEventListener('click', () => {
+            const parent = deleteBtn.parentElement;
+            parent.remove();
+            projects = projects.filter(project => !(project.projectID === this.projectID));
+            this.projectStoring();
+        })
+        return deleteBtn
     }
 
     doAllTheThings() {
