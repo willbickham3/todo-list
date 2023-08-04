@@ -69,6 +69,21 @@
     font-size: 0.8em;
     width: 150px;
     border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .delete-project {
+    border: none;
+    font-weight: bold;
+    background: none;
+  }
+  
+  .delete-project:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    transition: 0.2s;
   }
 
   .to-do-container {
