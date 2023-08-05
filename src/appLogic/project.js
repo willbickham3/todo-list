@@ -72,10 +72,15 @@ class Project {
     removeProject() {
         const deleteBtn = createAnElement('button', 'delete-project', null, 'X');
         deleteBtn.addEventListener('click', () => {
+            let retrievedProjects = localStorage.getItem('projects');
+            if (retrievedProjects) {
+                projects = JSON.parse(retrievedProjects);
+            }
             const parent = deleteBtn.parentElement;
             parent.remove();
-            projects = projects.filter(project => !(project.projectID === this.projectID));
+            projects = projects.filter(project => project !== this.projectName);
             this.projectStoring();
+            this.projectAppender();
         })
         return deleteBtn
     }
