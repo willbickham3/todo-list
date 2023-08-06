@@ -28,10 +28,18 @@ function projectBoard() {
     })
 
     createNewProject.addEventListener('click', () => {
+        let projects = localStorage.getItem('projects');
+        projects = JSON.parse(projects);
         const newProject = prompt('Name of Project', )
     if (newProject !== null && newProject.trim() !== '') {
+        if (projects.includes(newProject)) {
+            alert('Title already in use! Please select a new one.');
+            return
+        }
+        else {
         let project = new Project(newProject);
-        project.doAllTheThings()
+        project.doAllTheThings();
+        }
     }
     })
 }
