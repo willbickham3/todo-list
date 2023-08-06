@@ -72,6 +72,7 @@ class Project {
     removeProject() {
         const deleteBtn = createAnElement('button', 'delete-project', null, 'X');
         deleteBtn.addEventListener('click', () => {
+            let options = document.querySelectorAll('option');
             let retrievedProjects = localStorage.getItem('projects');
             if (retrievedProjects) {
                 projects = JSON.parse(retrievedProjects);
@@ -79,6 +80,11 @@ class Project {
             const parent = deleteBtn.parentElement;
             parent.remove();
             projects = projects.filter(project => project !== this.projectName);
+            options.forEach(option => {
+                if (option.innerHTML == this.projectName) {
+                    option.remove()
+                }
+            })
             this.projectStoring();
             this.projectAppender();
         })
