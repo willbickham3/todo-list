@@ -1,6 +1,4 @@
-# Project Name
-
-To Do List
+# To-Do List
 
 { You can view the live here -> [To Do List](https://willbickham3.github.io/todo-list/) }
 
